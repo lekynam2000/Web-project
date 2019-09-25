@@ -28,7 +28,10 @@ class encoder(object):
         na = np.array(colorList).reshape((n,n,3))
         print(len(na))
         result = Image.fromarray(na.astype(np.uint8))
-        result.save(path+"result.png","PNG")    
+        try:
+            result.save(path+"result.png","PNG")
+        except:
+            result.save("result.png","PNG")
 fileName="encodescript.txt"
 password = encoder(fileName)
 password.encode(12,"D:/python/")
