@@ -11,7 +11,7 @@ class decoder(object):
     def __init__(self):
         pass
         
-    def decode(self,address,key):
+    def decode(self,address,key,path):#path interm D:\whatever\
         c = 0
         im=Image.open(address)
         na=np.array(im).flatten()
@@ -25,10 +25,15 @@ class decoder(object):
                textList.append('')
                print("Error")
                c += 1
-        with open('your_file.txt', 'w') as f:    
-            for item in textList:
-                f.write(item)       
+        try:
+            with open(path+'your_file.txt', 'w') as f:    
+                for item in textList:
+                    f.write(item)
+        except:
+             with open('your_file.txt', 'w') as f:    
+                for item in textList:
+                    f.write(item)
 address="result.png"
 key=12
 whatever=decoder()
-whatever.decode(address,key)
+whatever.decode(address,key,"D:/")
