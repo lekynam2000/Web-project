@@ -9,10 +9,10 @@ import numpy as np
 import math as m
 from PIL import Image
 class encoder(object):
-    def __init__(self,text):
-        self.text=text        
-    def encode(self,key):
-        lineList = [x for y in self.text for x in y]
+    def __init__(self,file):
+        self.file=file        
+    def encode(self,key,path): #path interm of "D:/wh/"
+        lineList = [x for y in open(self.file) for x in y]
         ln=len(lineList)
         for i in range(3*(1+ln//3)-ln):
             lineList.append(" ");
@@ -28,8 +28,7 @@ class encoder(object):
         na = np.array(colorList).reshape((n,n,3))
         print(len(na))
         result = Image.fromarray(na.astype(np.uint8))
-        result.save("result.png")    
+        result.save(path+"result.png","PNG")    
 fileName="encodescript.txt"
 password = encoder(fileName)
-password.encode(12)
-
+password.encode(12,"D:/python/")
