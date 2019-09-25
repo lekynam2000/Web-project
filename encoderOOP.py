@@ -9,10 +9,10 @@ import numpy as np
 import math as m
 from PIL import Image
 class encoder(object):
-    def __init__(self,file):
-        self.file=file        
+    def __init__(self,text):
+        self.text=text        
     def encode(self,key):
-        lineList = [x for y in open(self.file) for x in y]
+        lineList = [x for y in self.text for x in y]
         ln=len(lineList)
         for i in range(3*(1+ln//3)-ln):
             lineList.append(" ");
